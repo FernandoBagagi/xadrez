@@ -6,8 +6,8 @@ public class PartidaXadrez {
     
     Tabuleiro tabuleiro;
 
-    public PartidaXadrez(Tabuleiro tabuleiro) {
-        this.tabuleiro = tabuleiro;
+    public PartidaXadrez() {
+        this.tabuleiro = new Tabuleiro(8, 8);
     }
 
     public PecaXadrez[][] getPecasXadrez() {
