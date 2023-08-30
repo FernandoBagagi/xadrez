@@ -1,10 +1,10 @@
 package aplicacao;
 
-import aplicacao.boardgame.Posicao;
+import aplicacao.chess.PartidaXadrez;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Posicao p = new Posicao(1, 1);
-        System.out.println(p.toString());
+        PartidaXadrez partidaXadrez = new PartidaXadrez();
+        UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
     }
 }
