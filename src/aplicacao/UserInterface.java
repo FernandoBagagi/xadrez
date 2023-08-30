@@ -17,7 +17,7 @@ public class UserInterface {
 
     private static void imprimirPeca(PecaXadrez peca) {
         if(peca == null) {
-            System.out.print(" ");
+            System.out.print("-");
         } else {
             System.out.print(peca);
         }
