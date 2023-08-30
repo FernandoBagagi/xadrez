@@ -1,18 +1,28 @@
 package aplicacao.boardgame;
 
-public abstract class Peca {
+public class Peca {
     
     protected Posicao posicao;
-
-    public abstract boolean[][] movimentacoesPossiveis();
-
-    public boolean isMovimentacaoPossivel(Posicao posicao){
-        //TODO: 
-        return false;
+    private Tabuleiro tabuleiro;
+    
+    public Peca(Tabuleiro tabuleiro) {
+        this.posicao = null;
+        this.tabuleiro = tabuleiro;
     }
-
-    public boolean isPossivelSeMovimentar(){
-        //TODO: 
-        return false;
+    
+    protected Tabuleiro getTabuleiro() {
+        return this.tabuleiro;
     }
+    
+    //public abstract boolean[][] movimentacoesPossiveis();
+
+    //TODO: 
+    /*public boolean isMovimentacaoPossivel(Posicao posicao){
+        return false;
+    }*/
+
+    //TODO: 
+    /*public boolean isPossivelSeMovimentar(){
+        return false;
+    }*/
 }
