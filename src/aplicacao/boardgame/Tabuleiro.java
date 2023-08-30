@@ -16,7 +16,7 @@ public class Tabuleiro {
         return this.pecas[0].length;
     }
 
-    public Peca[][] getPecas() {
+    /*public Peca[][] getPecas() {
         return this.pecas;
     }
 
@@ -28,22 +28,22 @@ public class Tabuleiro {
         return this.pecas[posicao.getLinha()][posicao.getColuna()];
     }
 
+    //TODO:
     public void posicionarPeca(Peca peca, Posicao posicao) {
-        //TODO:
     }
 
+    //TODO
     public Peca removerPeca(Posicao posicao) {
-        //TODO
         return null;
     }
 
+    //TODO
     public boolean posicaoExiste(Posicao posicao) {
-        //TODO
         return false;
     }
 
+    //TODO
     public boolean existeUmaPecaNaPosicao(Posicao posicao){
-        //TODO
         return false;
-    }
+    }*/
 }
