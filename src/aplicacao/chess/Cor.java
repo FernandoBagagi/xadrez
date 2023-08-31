@@ -1,6 +1,6 @@
 package aplicacao.chess;
 
-public enum Color {
+public enum Cor {
     PRETO,
     BRANCO;
 }
