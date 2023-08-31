@@ -28,12 +28,13 @@ public class Tabuleiro {
         return this.pecas[posicao.getLinha()][posicao.getColuna()];
     }
     
-    /*
-    //TODO:
+    
     public void posicionarPeca(Peca peca, Posicao posicao) {
+        this.pecas[posicao.getLinha()][posicao.getColuna()] = peca;
+        peca.posicao = posicao; //Consegue acessar pois é protected
     }
 
-    //TODO
+    /*//TODO
     public Peca removerPeca(Posicao posicao) {
         return null;
     }
