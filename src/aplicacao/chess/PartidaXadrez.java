@@ -36,6 +36,8 @@ public class PartidaXadrez {
         this.tabuleiro.posicionarPeca(new Cavalo(this.tabuleiro, Cor.PRETO), new Posicao(0, 6));
         this.tabuleiro.posicionarPeca(new Torre(this.tabuleiro, Cor.PRETO), new Posicao(0, 7));
 
-        
+        for(int i = 0; i < 8; i++) {
+            this.tabuleiro.posicionarPeca(new Peao(this.tabuleiro, Cor.PRETO), new Posicao(1, i));
+        }
     }
 }
