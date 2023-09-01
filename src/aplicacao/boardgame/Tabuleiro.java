@@ -41,7 +41,7 @@ public class Tabuleiro {
 
     private boolean posicaoExiste(int linha, int coluna) {
         boolean linhaExiste = linha >= 0 && linha < this.getLinhas();
-        boolean colunaExiste = coluna >= 0 && linha < this.getColunas();
+        boolean colunaExiste = coluna >= 0 && coluna < this.getColunas();
         return linhaExiste && colunaExiste;
     }
 
