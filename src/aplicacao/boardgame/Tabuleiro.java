@@ -49,8 +49,8 @@ public class Tabuleiro {
         return this.posicaoExiste(posicao.getLinha(), posicao.getColuna());
     }
 
-    //TODO
     public boolean existeUmaPecaNaPosicao(Posicao posicao){
-        return false;
+        return this.getPeca(posicao) != null;
     }
+    
 }
