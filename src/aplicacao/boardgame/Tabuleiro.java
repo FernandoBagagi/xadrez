@@ -25,7 +25,7 @@ public class Tabuleiro {
     }
 
     public Peca getPeca(Posicao posicao) {
-        return this.pecas[posicao.getLinha()][posicao.getColuna()];
+        return this.getPeca(posicao.getLinha(), posicao.getColuna());
     }
     
     
@@ -52,5 +52,5 @@ public class Tabuleiro {
     public boolean existeUmaPecaNaPosicao(Posicao posicao){
         return this.getPeca(posicao) != null;
     }
-    
+
 }
