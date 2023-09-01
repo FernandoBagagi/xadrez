@@ -37,6 +37,13 @@ public class Tabuleiro {
     /*//TODO
     public Peca removerPeca(Posicao posicao) {
         return null;
+    }*/
+
+    //TODO
+    private boolean posicaoExiste(int linha, int coluna) {
+        boolean linhaExiste = linha >= 0 && linha < this.getLinhas();
+        boolean colunaExiste = coluna >= 0 && linha < this.getColunas();
+        return linhaExiste && colunaExiste;
     }
 
     //TODO
@@ -47,5 +54,5 @@ public class Tabuleiro {
     //TODO
     public boolean existeUmaPecaNaPosicao(Posicao posicao){
         return false;
-    }*/
+    }
 }
