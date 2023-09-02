@@ -31,17 +31,17 @@ public class PartidaXadrez {
     }
 
     private void posicionarPecasInicio() {
-        this.tabuleiro.posicionarPeca(new Torre(this.tabuleiro, Cor.PRETO), new Posicao(0, 0));
-        this.tabuleiro.posicionarPeca(new Cavalo(this.tabuleiro, Cor.PRETO), new Posicao(0, 1));
-        this.tabuleiro.posicionarPeca(new Bispo(this.tabuleiro, Cor.PRETO), new Posicao(0, 2));
-        this.tabuleiro.posicionarPeca(new Rainha(this.tabuleiro, Cor.PRETO), new Posicao(0, 3));
-        this.tabuleiro.posicionarPeca(new Rei(this.tabuleiro, Cor.PRETO), new Posicao(0, 4));
-        this.tabuleiro.posicionarPeca(new Bispo(this.tabuleiro, Cor.PRETO), new Posicao(0, 5));
-        this.tabuleiro.posicionarPeca(new Cavalo(this.tabuleiro, Cor.PRETO), new Posicao(0, 6));
-        this.tabuleiro.posicionarPeca(new Torre(this.tabuleiro, Cor.PRETO), new Posicao(0, 7));
+        this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('b', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('c', 8, new Bispo(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('d', 8, new Rainha(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('e', 8, new Rei(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('f', 8, new Bispo(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('g', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('h', 8, new Torre(this.tabuleiro, Cor.PRETO));
 
-        for(int i = 0; i < 8; i++) {
-            this.tabuleiro.posicionarPeca(new Peao(this.tabuleiro, Cor.PRETO), new Posicao(1, i));
+        for(char c = 'a'; c <= 'h'; c++) {
+            this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO));
         }
     }
 }
