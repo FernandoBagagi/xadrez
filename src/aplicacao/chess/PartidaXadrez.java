@@ -26,6 +26,10 @@ public class PartidaXadrez {
         return tabuleiroXadrez;
     }
 
+    private void posicionarNovaPeca(char coluna, int linha, PecaXadrez peca) {
+        this.tabuleiro.posicionarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+    }
+
     private void posicionarPecasInicio() {
         this.tabuleiro.posicionarPeca(new Torre(this.tabuleiro, Cor.PRETO), new Posicao(0, 0));
         this.tabuleiro.posicionarPeca(new Cavalo(this.tabuleiro, Cor.PRETO), new Posicao(0, 1));
