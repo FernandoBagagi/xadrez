@@ -9,7 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-@Setter
 public class Posicao {
     
     private int linha;
