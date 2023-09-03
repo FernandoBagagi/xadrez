@@ -5,7 +5,7 @@ import aplicacao.boardgame.Tabuleiro;
 import aplicacao.chess.pecas.*;
 
 public class PartidaXadrez {
-    
+
     Tabuleiro tabuleiro;
 
     public PartidaXadrez() {
@@ -17,12 +17,12 @@ public class PartidaXadrez {
         final int linhas = this.tabuleiro.getLinhas();
         final int colunas = this.tabuleiro.getColunas();
         PecaXadrez[][] tabuleiroXadrez = new PecaXadrez[linhas][colunas];
-        for(int i = 0; i < linhas; i++) {
-            for(int j = 0; j < colunas; j++) {
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
                 tabuleiroXadrez[i][j] = (PecaXadrez) this.tabuleiro.getPeca(i, j);
             }
         }
-        
+
         return tabuleiroXadrez;
     }
 
@@ -40,7 +40,7 @@ public class PartidaXadrez {
         this.posicionarNovaPeca('g', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('h', 8, new Torre(this.tabuleiro, Cor.PRETO));
 
-        for(char c = 'a'; c <= 'h'; c++) {
+        for (char c = 'a'; c <= 'h'; c++) {
             this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO));
         }
     }

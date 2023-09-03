@@ -5,15 +5,15 @@ import lombok.Getter;
 
 @Getter
 public class PosicaoXadrez {
-    
+
     private char coluna;
     private int linha;
 
     public PosicaoXadrez(char coluna, int linha) {
-        if(coluna < 'a' || coluna > 'h') {
+        if (coluna < 'a' || coluna > 'h') {
             throw new XadrezExcecao("É esperdo que a coluna esteja entre 'a' e 'h', encontrado " + coluna);
         }
-        if(linha < 1 || linha > 8) {
+        if (linha < 1 || linha > 8) {
             throw new XadrezExcecao("É esperdo que a linha esteja entre 1 e 8, encontrado " + linha);
         }
         this.coluna = coluna;
@@ -30,6 +30,6 @@ public class PosicaoXadrez {
     }
 
     protected static PosicaoXadrez fromPosicao(Posicao posicao) {
-        return new PosicaoXadrez((char)('a' - posicao.getColuna()), 8 - posicao.getLinha());
+        return new PosicaoXadrez((char) ('a' - posicao.getColuna()), 8 - posicao.getLinha());
     }
 }
