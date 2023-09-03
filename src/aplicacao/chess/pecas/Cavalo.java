@@ -4,7 +4,7 @@ import aplicacao.boardgame.Tabuleiro;
 import aplicacao.chess.Cor;
 import aplicacao.chess.PecaXadrez;
 
-public class Cavalo extends PecaXadrez{
+public class Cavalo extends PecaXadrez {
 
     public Cavalo(Tabuleiro tabuleiro, Cor cor) {
         super(tabuleiro, cor);
@@ -14,5 +14,5 @@ public class Cavalo extends PecaXadrez{
     public String toString() {
         return "C";
     }
-    
+
 }
