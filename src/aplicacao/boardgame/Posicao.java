@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
 public class Posicao {
-    
+
     private int linha;
     private int coluna;
 
@@ -20,7 +19,9 @@ public class Posicao {
     }
 
     /*
-     * String mensagem = MessageFormat.format("{0} tem {1} {1,choice,1#ano|1<anos}", nome, idade);
-     * https://pt.stackoverflow.com/questions/512957/h%C3%A1-como-interpolar-strings-em-java
+     * String mensagem = MessageFormat.format("{0} tem {1} {1,choice,1#ano|1<anos}",
+     * nome, idade);
+     * https://pt.stackoverflow.com/questions/512957/h%C3%A1-como-interpolar-strings
+     * -em-java
      */
 }
