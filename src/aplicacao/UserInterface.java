@@ -3,11 +3,11 @@ package aplicacao;
 import aplicacao.chess.PecaXadrez;
 
 public class UserInterface {
-    
+
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
-        for(int i = 0; i < pecas.length; i++) {
+        for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
-            for(int j = 0; j < pecas.length; j++) {
+            for (int j = 0; j < pecas.length; j++) {
                 UserInterface.imprimirPeca(pecas[i][j]);
             }
             System.out.println();
@@ -16,7 +16,7 @@ public class UserInterface {
     }
 
     private static void imprimirPeca(PecaXadrez peca) {
-        if(peca == null) {
+        if (peca == null) {
             System.out.print("-");
         } else {
             System.out.print(peca);
