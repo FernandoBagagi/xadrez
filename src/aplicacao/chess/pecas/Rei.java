@@ -12,7 +12,7 @@ public class Rei extends PecaXadrez {
 
     @Override
     public String toString() {
-        return "r";
+        return Cor.BRANCO.equals(this.getCor()) ?  "K" : "k";
     }
 
 }
