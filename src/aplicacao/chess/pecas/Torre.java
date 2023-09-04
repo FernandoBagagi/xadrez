@@ -12,7 +12,7 @@ public class Torre extends PecaXadrez {
 
     @Override
     public String toString() {
-        return "T";
+        return Cor.BRANCO.equals(this.getCor()) ?  "T" : "t";
     }
 
 }
