@@ -12,7 +12,7 @@ public class Rainha extends PecaXadrez {
 
     @Override
     public String toString() {
-        return "R";
+        return Cor.BRANCO.equals(this.getCor()) ? "Q" : "q";
     }
 
 }
