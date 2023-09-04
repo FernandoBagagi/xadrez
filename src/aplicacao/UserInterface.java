@@ -12,7 +12,7 @@ public class UserInterface {
             }
             System.out.println();
         }
-        System.out.print("  a b c d e f g h");
+        System.out.println("  a b c d e f g h");
     }
 
     private static void imprimirPeca(PecaXadrez peca) {
