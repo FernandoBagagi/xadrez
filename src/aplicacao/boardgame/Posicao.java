@@ -15,7 +15,7 @@ public class Posicao {
 
     @Override
     public String toString() {
-        return "%d, %d".formatted(linha, coluna);
+        return String.format("%d, %d",linha, coluna);
     }
 
     /*
