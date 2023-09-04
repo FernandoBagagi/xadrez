@@ -12,7 +12,7 @@ public class Cavalo extends PecaXadrez {
 
     @Override
     public String toString() {
-        return "C";
+        return Cor.BRANCO.equals(this.getCor()) ? "C" : "c";
     }
 
 }
