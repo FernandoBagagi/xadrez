@@ -4,6 +4,10 @@ import aplicacao.chess.PecaXadrez;
 
 public class UserInterface {
 
+    /*Utility classes should not have public constructors*/
+    private UserInterface(){
+    }
+
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
