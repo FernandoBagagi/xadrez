@@ -1,11 +1,26 @@
 package aplicacao;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import aplicacao.chess.PecaXadrez;
+import aplicacao.chess.PosicaoXadrez;
 
 public class UserInterface {
 
     /*Utility classes should not have public constructors*/
     private UserInterface(){
+    }
+
+    public static PosicaoXadrez lerPosicaoXadrez(Scanner scanner) {
+        try {
+            String valorLido = scanner.nextLine();
+            char coluna = valorLido.charAt(0);
+            int linha = Integer.parseInt(valorLido.substring(1));
+            return new PosicaoXadrez(coluna, linha);
+        } catch (RuntimeException e) {
+            throw new InputMismatchException("Erro ao ler posição. Os valores válidos são de a1 até h8");
+        }
     }
 
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
@@ -27,4 +42,6 @@ public class UserInterface {
         }
         System.out.print(" ");
     }
+
+
 }
