@@ -27,10 +27,8 @@ public class Tabuleiro {
     }
 
     public Peca getPeca(int linha, int coluna) {
-        if (this.posicaoExiste(linha, coluna)) {
-            return this.pecas[linha][coluna];
-        }
-        return null; // Deve ter exceção e não retorna null
+        this.posicaoExiste(linha, coluna); // Se a posicão não existir lança exceção
+        return this.pecas[linha][coluna];
     }
 
     public Peca getPeca(Posicao posicao) {
