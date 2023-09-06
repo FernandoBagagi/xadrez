@@ -32,6 +32,9 @@ public class Tabuleiro {
     }
 
     public Peca getPeca(Posicao posicao) {
+        if (posicao == null) {
+            throw new TabuleiroExcecao("Posição inválida! A posição informada é nula!");
+        }
         return this.getPeca(posicao.getLinha(), posicao.getColuna());
     }
 
