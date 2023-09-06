@@ -1,5 +1,6 @@
 package aplicacao.chess;
 
+import aplicacao.boardgame.Peca;
 import aplicacao.boardgame.Posicao;
 import aplicacao.boardgame.Tabuleiro;
 import aplicacao.chess.pecas.*;
@@ -26,6 +27,27 @@ public class PartidaXadrez {
         return tabuleiroXadrez;
     }
 
+    public PecaXadrez moverPecaXadrez(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino) {
+        Posicao origem = posicaoOrigem.toPosicao();
+        Posicao destino = posicaoDestino.toPosicao();
+        this.validarPosicaoDestino(destino);
+        Peca pecaCapturada = this.moverPeca(origem, destino);
+        return (PecaXadrez)pecaCapturada;
+    }
+
+    private void validarPosicaoDestino(Posicao destino) {
+        if(!this.tabuleiro.existeUmaPecaNaPosicao(destino)) {
+            throw new XadrezExcecao("Não há nenhuma peça na posição de origem!");
+        }
+    }
+
+    private Peca moverPeca(Posicao origem, Posicao destino) {
+        Peca pecaMovida = this.tabuleiro.removerPeca(origem);
+        Peca pecaCapturada = this.tabuleiro.removerPeca(destino);
+        this.tabuleiro.posicionarPeca(pecaMovida, destino);
+        return pecaCapturada;
+    }
+
     private void posicionarNovaPeca(char coluna, int linha, PecaXadrez peca) {
         this.tabuleiro.posicionarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
     }
@@ -44,4 +66,5 @@ public class PartidaXadrez {
             this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO));
         }
     }
+
 }
