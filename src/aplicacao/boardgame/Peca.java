@@ -14,16 +14,16 @@ public class Peca {
         return this.tabuleiro;
     }
 
-    public boolean[][] movimentacoesPossiveis(){
+    public boolean[][] movimentacoesPossiveis() {
         return null;
     }
 
-    public boolean isMovimentacaoPossivel(Posicao posicao){
+    public boolean isMovimentacaoPossivel(Posicao posicao) {
         return false;
     }
-    
-    public boolean isPossivelSeMovimentar(){
+
+    public boolean isPossivelSeMovimentar() {
         return false;
     }
-    
+
 }
