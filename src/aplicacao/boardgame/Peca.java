@@ -16,7 +16,7 @@ public class Peca {
 
     // public abstract boolean[][] movimentacoesPossiveis();
 
-    // TODO:
+    
     /*
      * public boolean isMovimentacaoPossivel(Posicao posicao){
      * return false;
