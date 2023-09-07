@@ -19,11 +19,11 @@ public class Peca {
     }
 
     
-    /*
-     * public boolean isMovimentacaoPossivel(Posicao posicao){
-     * return false;
-     * }
-     */
+    
+    public boolean isMovimentacaoPossivel(Posicao posicao){
+        return false;
+    }
+    
 
     
     /*
