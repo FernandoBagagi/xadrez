@@ -23,7 +23,7 @@ public class Peca {
      * }
      */
 
-    // TODO:
+    
     /*
      * public boolean isPossivelSeMovimentar(){
      * return false;
