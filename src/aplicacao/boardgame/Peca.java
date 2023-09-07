@@ -14,7 +14,9 @@ public class Peca {
         return this.tabuleiro;
     }
 
-    // public abstract boolean[][] movimentacoesPossiveis();
+    public boolean[][] movimentacoesPossiveis(){
+        return null;
+    }
 
     
     /*
