@@ -26,9 +26,9 @@ public class Peca {
     
 
     
-    /*
-     * public boolean isPossivelSeMovimentar(){
-     * return false;
-     * }
-     */
+    
+    public boolean isPossivelSeMovimentar(){
+        return false;
+    }
+    
 }
