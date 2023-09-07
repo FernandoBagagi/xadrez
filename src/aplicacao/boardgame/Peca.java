@@ -18,14 +18,9 @@ public class Peca {
         return null;
     }
 
-    
-    
     public boolean isMovimentacaoPossivel(Posicao posicao){
         return false;
     }
-    
-
-    
     
     public boolean isPossivelSeMovimentar(){
         return false;
