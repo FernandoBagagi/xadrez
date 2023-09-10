@@ -7,4 +7,5 @@ public class App {
         PartidaXadrez partidaXadrez = new PartidaXadrez();
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
     }
+    /*Não zerar */
 }
