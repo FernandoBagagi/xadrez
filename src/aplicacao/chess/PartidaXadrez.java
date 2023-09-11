@@ -30,14 +30,16 @@ public class PartidaXadrez {
     public PecaXadrez moverPecaXadrez(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino) {
         Posicao origem = posicaoOrigem.toPosicao();
         Posicao destino = posicaoDestino.toPosicao();
-        this.validarPosicaoDestino(destino);
+        this.validarPosicaoOrigem(origem);
         Peca pecaCapturada = this.moverPeca(origem, destino);
         return (PecaXadrez)pecaCapturada;
     }
 
-    private void validarPosicaoDestino(Posicao destino) {
-        if(!this.tabuleiro.existeUmaPecaNaPosicao(destino)) {
-            throw new XadrezExcecao("Não há nenhuma peça na posição de origem!");
+    private void validarPosicaoOrigem(Posicao origem) {
+        if(!this.tabuleiro.existeUmaPecaNaPosicao(origem)) {
+            StringBuilder mensagemErro = new StringBuilder("Não há nenhuma peça na posição de origem (");
+            mensagemErro.append(origem.toPosicaoXadrex()).append(")!");
+            throw new XadrezExcecao(mensagemErro.toString());
         }
     }
 
