@@ -1,5 +1,6 @@
 package aplicacao.boardgame;
 
+import aplicacao.chess.PosicaoXadrez;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,10 @@ public class Posicao {
     @Override
     public String toString() {
         return String.format("%d, %d",linha, coluna);
+    }
+
+    public PosicaoXadrez toPosicaoXadrex() {
+        return new PosicaoXadrez((char)('a' + this.getColuna()), 8 - this.getLinha());
     }
 
     /*
