@@ -1,6 +1,6 @@
 package aplicacao.boardgame;
 
-public class Peca {
+public abstract class Peca {
 
     protected Posicao posicao;
     private Tabuleiro tabuleiro;
@@ -14,18 +14,22 @@ public class Peca {
         return this.tabuleiro;
     }
 
-    public boolean[][] movimentacoesPossiveis() {
-        //TODO: 
-        return null;
-    }
+    public abstract boolean[][] movimentacoesPossiveis();
 
+    /*Hook Methods -> Métodos concretos que chamam métodos abstratos*/
+    /*Template Methods -> oferece um padrão de método que depende de objetos abstratos*/
     public boolean isMovimentacaoPossivel(Posicao posicao) {
-        //TODO: 
-        return false;
+        return this.movimentacoesPossiveis()[posicao.getLinha()][posicao.getColuna()];
     }
 
-    public boolean isPossivelSeMovimentar() {
-        //TODO: 
+    public boolean existePeloMenosUmaMovimentacaoPossivel() {
+        for (boolean[] linha : this.movimentacoesPossiveis()) {
+            for (boolean item : linha) {
+                if (item) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
