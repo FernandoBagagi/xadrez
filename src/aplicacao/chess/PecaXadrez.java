@@ -3,7 +3,7 @@ package aplicacao.chess;
 import aplicacao.boardgame.Peca;
 import aplicacao.boardgame.Tabuleiro;
 
-public class PecaXadrez extends Peca {
+public abstract class PecaXadrez extends Peca {
 
     private Cor cor;
 
