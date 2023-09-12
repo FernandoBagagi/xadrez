@@ -41,6 +41,11 @@ public class PartidaXadrez {
             mensagemErro.append(origem.toPosicaoXadrex()).append(")!");
             throw new XadrezExcecao(mensagemErro.toString());
         }
+        if(!this.tabuleiro.getPeca(origem).existePeloMenosUmaMovimentacaoPossivel()) {
+            StringBuilder mensagemErro = new StringBuilder("Não há nenhum possível movimento para a peça na posição (");
+            mensagemErro.append(origem.toPosicaoXadrex()).append(")!");
+            throw new XadrezExcecao(mensagemErro.toString());
+        }
     }
 
     private Peca moverPeca(Posicao origem, Posicao destino) {
