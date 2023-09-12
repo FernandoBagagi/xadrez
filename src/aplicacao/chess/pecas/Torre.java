@@ -15,4 +15,12 @@ public class Torre extends PecaXadrez {
         return Cor.BRANCO.equals(this.getCor()) ?  "T" : "t";
     }
 
+    @Override
+    public boolean[][] movimentacoesPossiveis() {
+        final int linhas = this.getTabuleiro().getLinhas();
+        final int colunas = this.getTabuleiro().getColunas();
+        boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
+        return matrizPossiveisMovimentos;
+    }
+
 }
