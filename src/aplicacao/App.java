@@ -14,7 +14,9 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         PartidaXadrez partidaXadrez = new PartidaXadrez();
         
-        while (true) {
+        int numeroJogadas = 50;
+
+        while (numeroJogadas-- != 0) {
             try {
                 UserInterface.limparTela();
     
