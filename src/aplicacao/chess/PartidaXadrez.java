@@ -37,14 +37,10 @@ public class PartidaXadrez {
 
     private void validarPosicaoOrigem(Posicao origem) {
         if(!this.tabuleiro.existeUmaPecaNaPosicao(origem)) {
-            StringBuilder mensagemErro = new StringBuilder("Não há nenhuma peça na posição de origem (");
-            mensagemErro.append(origem.toPosicaoXadrex()).append(")!");
-            throw new XadrezExcecao(mensagemErro.toString());
+            throw new XadrezExcecao(String.format("Não há nenhuma peça na posição de origem (%s)!",origem.toPosicaoXadrex()));
         }
         if(!this.tabuleiro.getPeca(origem).existePeloMenosUmaMovimentacaoPossivel()) {
-            StringBuilder mensagemErro = new StringBuilder("Não há nenhum possível movimento para a peça na posição (");
-            mensagemErro.append(origem.toPosicaoXadrex()).append(")!");
-            throw new XadrezExcecao(mensagemErro.toString());
+            throw new XadrezExcecao(String.format("Não há nenhum possível movimento para a peça na posição (%s)!",origem.toPosicaoXadrex()));
         }
     }
 
