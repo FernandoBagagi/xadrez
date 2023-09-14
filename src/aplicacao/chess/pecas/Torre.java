@@ -31,11 +31,7 @@ public class Torre extends PecaXadrez {
     }
 
     private void moverParaCima(boolean[][] matrizPossiveisMovimentos) {
-        Posicao posicaoAux = new Posicao();
-
-        //Mover para cima
-        posicaoAux.setLinha(this.posicao.getLinha() - 1);
-        posicaoAux.setColuna(this.posicao.getColuna());
+        Posicao posicaoAux = new Posicao(this.posicao.getLinha() - 1, this.posicao.getColuna());
         while (true) {
             boolean existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
