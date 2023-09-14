@@ -25,7 +25,7 @@ public class Torre extends PecaXadrez {
         this.moverParaCima(matrizPossiveisMovimentos);
         this.moverParaBaixo(matrizPossiveisMovimentos);
         //Mover para esquerda
-        //Mover para direita
+        this.moverParaDireita(matrizPossiveisMovimentos);
         
         return matrizPossiveisMovimentos;
     }
@@ -56,6 +56,23 @@ public class Torre extends PecaXadrez {
             if (isEspacoLivre) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
                 posicaoAux.setLinha(posicaoAux.getLinha() + 1);
+            } else if (temPecaDoOponente) {
+                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;                
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void moverParaDireita(boolean[][] matrizPossiveisMovimentos) {
+        Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
+        while (true) {
+            boolean existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
+            boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
+            boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
+            if (isEspacoLivre) {
+                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                posicaoAux.setColuna(posicaoAux.getColuna() + 1);
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;                
             } else {
