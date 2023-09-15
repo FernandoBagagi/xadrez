@@ -23,21 +23,32 @@ public class UserInterface {
             throw new InputMismatchException("Erro ao ler posição. Os valores válidos são de a1 até h8");
         }
     }
-
+    
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
             for (int j = 0; j < pecas.length; j++) {
-                UserInterface.imprimirPeca(pecas[i][j]);
+                UserInterface.imprimirPeca(pecas[i][j], false);
+            }
+            System.out.println();
+        }
+        System.out.println("  a b c d e f g h");
+    }
+    
+    public static void imprimirTabuleiro(PecaXadrez[][] pecas, boolean[][] possiveisMovimentacoes) {
+        for (int i = 0; i < pecas.length; i++) {
+            System.out.print((8 - i) + " ");
+            for (int j = 0; j < pecas.length; j++) {
+                UserInterface.imprimirPeca(pecas[i][j], possiveisMovimentacoes[i][j]);
             }
             System.out.println();
         }
         System.out.println("  a b c d e f g h");
     }
 
-    private static void imprimirPeca(PecaXadrez peca) {
+    private static void imprimirPeca(PecaXadrez peca, boolean background) {
         if (peca == null) {
-            System.out.print("-");
+            System.out.print(background ? "#" : " ");
         } else {
             System.out.print(peca);
         }
@@ -65,5 +76,6 @@ public class UserInterface {
             }
         }
     }
+
 
 }

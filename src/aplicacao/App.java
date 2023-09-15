@@ -25,6 +25,11 @@ public class App {
                 System.out.print("\nOrigem: ");
                 PosicaoXadrez origem = UserInterface.lerPosicaoXadrez(scanner);
     
+                boolean[][] possiveisMovimentacoes = partidaXadrez.possiveisMovimentacoes(origem);
+                UserInterface.limparTela();
+                UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez(), possiveisMovimentacoes);
+                
+
                 System.out.print("\nDestino: ");
                 PosicaoXadrez destino = UserInterface.lerPosicaoXadrez(scanner);
                 System.out.println();
