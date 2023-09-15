@@ -44,11 +44,17 @@ public class UserInterface {
         System.out.print(" ");
     }
 
+    /**
+     * 
+     */
     public static void limparTela() {
         if (System.getProperty("os.name").contains("Windows")) {
             try {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } catch (InterruptedException | IOException e) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Thread.currentThread().interrupt();
+            }  catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
@@ -59,4 +65,5 @@ public class UserInterface {
             }
         }
     }
+
 }
