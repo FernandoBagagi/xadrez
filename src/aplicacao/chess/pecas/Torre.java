@@ -2,7 +2,6 @@ package aplicacao.chess.pecas;
 
 import aplicacao.boardgame.Posicao;
 import aplicacao.boardgame.Tabuleiro;
-import aplicacao.boardgame.TabuleiroExcecao;
 import aplicacao.chess.Cor;
 import aplicacao.chess.PecaXadrez;
 
@@ -24,8 +23,9 @@ public class Torre extends PecaXadrez {
         boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
 
         this.moverParaCima(matrizPossiveisMovimentos);
+        this.moverParaDireita(matrizPossiveisMovimentos);
         this.moverParaBaixo(matrizPossiveisMovimentos);
-                this.moverParaEsquerda(matrizPossiveisMovimentos);
+        this.moverParaEsquerda(matrizPossiveisMovimentos);
         
         return matrizPossiveisMovimentos;
     }
