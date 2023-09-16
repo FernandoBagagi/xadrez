@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import aplicacao.chess.PartidaXadrez;
 import aplicacao.chess.PecaXadrez;
 import aplicacao.chess.PosicaoXadrez;
 
@@ -22,6 +23,12 @@ public class UserInterface {
         } catch (RuntimeException e) {
             throw new InputMismatchException("Erro ao ler posição. Os valores válidos são de a1 até h8");
         }
+    }
+
+    public static void imprimirPartidaXadrez(PartidaXadrez partidaXadrez) {
+        UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
+        System.out.println(String.format("%nTurno: %d)!",partidaXadrez.getTurno()));
+        System.out.println(String.format("Esperando o jogador das peças %s fazer a jogada", partidaXadrez.getCorPecasJogadorDoTurno()));
     }
     
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
