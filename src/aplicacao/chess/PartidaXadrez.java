@@ -7,11 +7,23 @@ import aplicacao.chess.pecas.*;
 
 public class PartidaXadrez {
 
-    Tabuleiro tabuleiro;
+    private int turno;
+    private Cor jogadorDoTurno;
+    private Tabuleiro tabuleiro;
 
     public PartidaXadrez() {
         this.tabuleiro = new Tabuleiro(8, 8);
+        this.turno = 1;
+        this.jogadorDoTurno = Cor.BRANCO;
         this.posicionarPecasInicio();
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public Cor getJogadorDoTurno() {
+        return jogadorDoTurno;
     }
 
     public PecaXadrez[][] getPecasXadrez() {
@@ -27,6 +39,11 @@ public class PartidaXadrez {
         return tabuleiroXadrez;
     }
 
+    private void mudarTurno() {
+        this.turno++;
+        this.jogadorDoTurno = Cor.BRANCO.equals(this.jogadorDoTurno) ? Cor.PRETO : Cor.BRANCO;
+    }
+
     public boolean[][] possiveisMovimentacoes(PosicaoXadrez origem) {
         Posicao posicao = origem.toPosicao();
         this.validarPosicaoOrigem(posicao);
@@ -39,12 +56,17 @@ public class PartidaXadrez {
         this.validarPosicaoOrigem(origem);
         this.validarPosicaoDestino(origem, destino);
         Peca pecaCapturada = this.moverPeca(origem, destino);
+        this.mudarTurno();
         return (PecaXadrez)pecaCapturada;
     }
 
     private void validarPosicaoOrigem(Posicao origem) {
         if(!this.tabuleiro.existeUmaPecaNaPosicao(origem)) {
             throw new XadrezExcecao(String.format("Não há nenhuma peça na posição de origem (%s)!",origem.toPosicaoXadrex()));
+        }
+        Cor corPecaOrigem = ((PecaXadrez)this.tabuleiro.getPeca(origem)).getCor();
+        if(!this.jogadorDoTurno.equals(corPecaOrigem)) {
+            throw new XadrezExcecao(String.format("A peça na posição de origem (%s) não é %s!",origem.toPosicaoXadrex(), Cor.BRANCO.equals(this.jogadorDoTurno) ? "branca" : "preta"));
         }
         if(!this.tabuleiro.getPeca(origem).existePeloMenosUmaMovimentacaoPossivel()) {
             throw new XadrezExcecao(String.format("Não há nenhum possível movimento para a peça na posição (%s)!",origem.toPosicaoXadrex()));
