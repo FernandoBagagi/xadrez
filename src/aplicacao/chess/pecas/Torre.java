@@ -25,8 +25,7 @@ public class Torre extends PecaXadrez {
 
         this.moverParaCima(matrizPossiveisMovimentos);
         this.moverParaBaixo(matrizPossiveisMovimentos);
-        this.moverParaEsquerda(matrizPossiveisMovimentos);
-        this.moverParaDireita(matrizPossiveisMovimentos);
+                this.moverParaEsquerda(matrizPossiveisMovimentos);
         
         return matrizPossiveisMovimentos;
     }
@@ -34,12 +33,7 @@ public class Torre extends PecaXadrez {
     private void moverParaCima(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha() - 1, this.posicao.getColuna());
         while (true) {
-            boolean existePosicao = false;
-            try {
-                existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
-            } catch (TabuleiroExcecao e) {
-                existePosicao = false;
-            }
+            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
             if (isEspacoLivre) {
@@ -56,12 +50,7 @@ public class Torre extends PecaXadrez {
     private void moverParaBaixo(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha() + 1, this.posicao.getColuna());
         while (true) {
-            boolean existePosicao = false;
-            try {
-                existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
-            } catch (TabuleiroExcecao e) {
-                existePosicao = false;
-            }
+            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
             if (isEspacoLivre) {
@@ -78,12 +67,7 @@ public class Torre extends PecaXadrez {
     private void moverParaEsquerda(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 1);
         while (true) {
-            boolean existePosicao = false;
-            try {
-                existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
-            } catch (TabuleiroExcecao e) {
-                existePosicao = false;
-            }
+            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
             if (isEspacoLivre) {
@@ -100,12 +84,7 @@ public class Torre extends PecaXadrez {
     private void moverParaDireita(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
         while (true) {
-            boolean existePosicao = false;
-            try {
-                existePosicao = this.getTabuleiro().posicaoExiste(posicaoAux);
-            } catch (TabuleiroExcecao e) {
-                existePosicao = false;
-            }
+            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
             if (isEspacoLivre) {

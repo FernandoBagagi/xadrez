@@ -69,6 +69,14 @@ public class Tabuleiro {
         return true;
     }
 
+    public boolean posicaoExisteTratado(Posicao posicao) {
+        try {
+            return this.posicaoExiste(posicao.getLinha(), posicao.getColuna());
+        } catch (TabuleiroExcecao e) {
+            return false;
+        }
+    }
+
     public boolean posicaoExiste(Posicao posicao) {
         return this.posicaoExiste(posicao.getLinha(), posicao.getColuna());
     }
