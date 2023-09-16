@@ -22,15 +22,15 @@ public class Torre extends PecaXadrez {
         final int colunas = this.getTabuleiro().getColunas();
         boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
 
-        this.moverParaCima(matrizPossiveisMovimentos);
-        this.moverParaDireita(matrizPossiveisMovimentos);
-        this.moverParaBaixo(matrizPossiveisMovimentos);
-        this.moverParaEsquerda(matrizPossiveisMovimentos);
+        this.moverParaNorte(matrizPossiveisMovimentos);
+        this.moverParaLeste(matrizPossiveisMovimentos);
+        this.moverParaSul(matrizPossiveisMovimentos);
+        this.moverParaOeste(matrizPossiveisMovimentos);
         
         return matrizPossiveisMovimentos;
     }
 
-    private void moverParaCima(boolean[][] matrizPossiveisMovimentos) {
+    private void moverParaNorte(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha() - 1, this.posicao.getColuna());
         while (true) {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
@@ -47,7 +47,24 @@ public class Torre extends PecaXadrez {
         }
     }
 
-    private void moverParaBaixo(boolean[][] matrizPossiveisMovimentos) {
+    private void moverParaLeste(boolean[][] matrizPossiveisMovimentos) {
+        Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
+        while (true) {
+            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
+            boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
+            boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
+            if (isEspacoLivre) {
+                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                posicaoAux.setColuna(posicaoAux.getColuna() + 1);
+            } else if (temPecaDoOponente) {
+                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;                
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void moverParaSul(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha() + 1, this.posicao.getColuna());
         while (true) {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
@@ -64,7 +81,7 @@ public class Torre extends PecaXadrez {
         }
     }
 
-    private void moverParaEsquerda(boolean[][] matrizPossiveisMovimentos) {
+    private void moverParaOeste(boolean[][] matrizPossiveisMovimentos) {
         Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 1);
         while (true) {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
@@ -73,23 +90,6 @@ public class Torre extends PecaXadrez {
             if (isEspacoLivre) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
                 posicaoAux.setColuna(posicaoAux.getColuna() - 1);
-            } else if (temPecaDoOponente) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;                
-            } else {
-                break;
-            }
-        }
-    }
-
-    private void moverParaDireita(boolean[][] matrizPossiveisMovimentos) {
-        Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
-        while (true) {
-            boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
-            boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
-            boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
-            if (isEspacoLivre) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                posicaoAux.setColuna(posicaoAux.getColuna() + 1);
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;                
             } else {
