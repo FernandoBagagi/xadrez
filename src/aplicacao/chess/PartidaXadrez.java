@@ -107,6 +107,19 @@ public class PartidaXadrez {
         for (char c = 'a'; c <= 'h'; c++) {
             this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO));
         }
+
+        this.posicionarNovaPeca('a', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('b', 1, new Cavalo(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('c', 1, new Bispo(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('d', 1, new Rainha(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('e', 1, new Rei(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('f', 1, new Bispo(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('g', 1, new Cavalo(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('h', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+
+        for (char c = 'a'; c <= 'h'; c++) {
+            this.posicionarNovaPeca(c, 2, new Peao(this.tabuleiro, Cor.PRETO));
+        }
     }
 
 }
