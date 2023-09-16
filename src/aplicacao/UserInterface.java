@@ -28,7 +28,7 @@ public class UserInterface {
     public static void imprimirPartidaXadrez(PartidaXadrez partidaXadrez) {
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
         System.out.println(String.format("%nTurno: %d)!",partidaXadrez.getTurno()));
-        System.out.println(String.format("Esperando o jogador das peças %s fazer a jogada", partidaXadrez.getCorPecasJogadorDoTurno()));
+        System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
     }
     
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
