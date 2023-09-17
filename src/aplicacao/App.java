@@ -43,5 +43,5 @@ public class App {
 
         //UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
     }
-    /*Não zerar 2*/
+    
 }
