@@ -2,7 +2,10 @@ package aplicacao;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import aplicacao.chess.PartidaXadrez;
 import aplicacao.chess.PecaXadrez;
@@ -84,5 +87,9 @@ public class UserInterface {
         }
     }
 
+    private static void imprimirPecasCapturadas (List<PecaXadrez> pecasCapturadas) {
+        List<PecaXadrez> pecasBrancasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isBranca).collect(Collectors.toList());
+        List<PecaXadrez> pecasPretasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isPreta).collect(Collectors.toList());
+    }
 
 }
