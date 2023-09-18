@@ -21,4 +21,13 @@ public abstract class PecaXadrez extends Peca {
         PecaXadrez peca = (PecaXadrez) this.getTabuleiro().getPeca(posicao);
         return peca != null && !this.cor.equals(peca.getCor());
     }
+
+    public boolean isBranca() {
+        return Cor.BRANCO.equals(this.getCor());
+    }
+
+    public boolean isPreta() {
+        return Cor.PRETO.equals(this.getCor());
+    }
+
 }
