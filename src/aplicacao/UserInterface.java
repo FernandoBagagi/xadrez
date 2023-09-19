@@ -65,9 +65,6 @@ public class UserInterface {
         System.out.print(" ");
     }
 
-    /**
-     * 
-     */
     public static void limparTela() {
         if (System.getProperty("os.name").contains("Windows")) {
             try {
