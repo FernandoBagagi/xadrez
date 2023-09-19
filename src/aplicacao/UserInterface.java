@@ -90,6 +90,7 @@ public class UserInterface {
     private static void imprimirPecasCapturadas (List<PecaXadrez> pecasCapturadas) {
         List<PecaXadrez> pecasBrancasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isBranca).collect(Collectors.toList());
         List<PecaXadrez> pecasPretasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isPreta).collect(Collectors.toList());
+        //TODO:
     }
 
 }
