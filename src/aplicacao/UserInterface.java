@@ -1,6 +1,8 @@
 package aplicacao;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -28,8 +30,9 @@ public class UserInterface {
         }
     }
 
-    public static void imprimirPartidaXadrez(PartidaXadrez partidaXadrez) {
+    public static void imprimirPartidaXadrez(PartidaXadrez partidaXadrez, List<PecaXadrez> pecasCapturadas) {
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
+        UserInterface.imprimirPecasCapturadas(pecasCapturadas);
         System.out.println(String.format("%nTurno: %d)!",partidaXadrez.getTurno()));
         System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
     }
@@ -86,8 +89,13 @@ public class UserInterface {
 
     private static void imprimirPecasCapturadas (List<PecaXadrez> pecasCapturadas) {
         List<PecaXadrez> pecasBrancasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isBranca).collect(Collectors.toList());
-        List<PecaXadrez> pecasPretasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isPreta).collect(Collectors.toList());
-        //TODO:
+        Object[] pecasPretasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isPreta).toArray();
+        
+        System.out.println("\nPeças capturadas:");
+        System.out.print("Brancas: ");
+        System.out.println(Arrays.toString(pecasBrancasCapturadas.toArray()));
+        System.out.print("Pretas: ");
+        System.out.println(Arrays.toString(pecasPretasCapturadas));
     }
 
 }
