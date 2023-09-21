@@ -1,5 +1,8 @@
 package aplicacao.chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import aplicacao.boardgame.Peca;
 import aplicacao.boardgame.Posicao;
 import aplicacao.boardgame.Tabuleiro;
@@ -10,11 +13,15 @@ public class PartidaXadrez {
     private int turno;
     private Cor jogadorDoTurno;
     private Tabuleiro tabuleiro;
+    List<Peca> pecasNoTabuleiro;
+    List<Peca> pecasCapturadas;
 
     public PartidaXadrez() {
         this.tabuleiro = new Tabuleiro(8, 8);
         this.turno = 1;
         this.jogadorDoTurno = Cor.BRANCO;
+        this.pecasNoTabuleiro = new ArrayList<>();
+        this.pecasCapturadas = new ArrayList<>();
         this.posicionarPecasInicio();
     }
 
@@ -39,7 +46,6 @@ public class PartidaXadrez {
                 tabuleiroXadrez[i][j] = (PecaXadrez) this.tabuleiro.getPeca(i, j);
             }
         }
-
         return tabuleiroXadrez;
     }
 
@@ -87,11 +93,16 @@ public class PartidaXadrez {
         Peca pecaMovida = this.tabuleiro.removerPeca(origem);
         Peca pecaCapturada = this.tabuleiro.removerPeca(destino);
         this.tabuleiro.posicionarPeca(pecaMovida, destino);
+        if(pecaCapturada != null) {
+            this.pecasNoTabuleiro.remove(pecaCapturada);
+            this.pecasCapturadas.add(pecaCapturada);
+        }
         return pecaCapturada;
     }
 
     private void posicionarNovaPeca(char coluna, int linha, PecaXadrez peca) {
         this.tabuleiro.posicionarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+        this.pecasNoTabuleiro.add(peca);
     }
 
     private void posicionarPecasInicio() {
@@ -108,7 +119,7 @@ public class PartidaXadrez {
             this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO));
         }
 
-        this.posicionarNovaPeca('a', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('a', 3, new Torre(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('b', 1, new Cavalo(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('c', 1, new Bispo(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('d', 1, new Rainha(this.tabuleiro, Cor.BRANCO));
