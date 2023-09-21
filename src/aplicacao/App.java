@@ -15,7 +15,7 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         PartidaXadrez partidaXadrez = new PartidaXadrez();
-        List<PecaXadrez> pecasCapturadas = new ArrayList<>();
+        List<PecaXadrez> pecasCapturadas = new ArrayList<>(); //Já tem na partidaXadrez
 
         int numeroJogadas = 50;
 
