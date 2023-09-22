@@ -10,9 +10,9 @@ import aplicacao.chess.pecas.*;
 
 public class PartidaXadrez {
 
+    private Tabuleiro tabuleiro;
     private int turno;
     private Cor jogadorDoTurno;
-    private Tabuleiro tabuleiro;
     private List<Peca> pecasNoTabuleiro;
     private List<Peca> pecasCapturadas;
 
