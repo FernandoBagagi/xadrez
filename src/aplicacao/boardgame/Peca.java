@@ -5,7 +5,7 @@ public abstract class Peca {
     protected Posicao posicao;
     private Tabuleiro tabuleiro;
 
-    public Peca(Tabuleiro tabuleiro) {
+    protected Peca(Tabuleiro tabuleiro) {
         this.posicao = null;
         this.tabuleiro = tabuleiro;
     }
