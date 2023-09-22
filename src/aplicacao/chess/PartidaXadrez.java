@@ -43,6 +43,14 @@ public class PartidaXadrez {
         return Cor.BRANCO.equals(jogadorDoTurno) ? Cor.PRETO : Cor.BRANCO;
     }
 
+    private PecaXadrez getRei(Cor cor) {
+        return this.pecasNoTabuleiro.stream()
+                    .map(PecaXadrez.class::cast)
+                    .filter(peca -> peca instanceof Rei && cor.equals(peca.getCor()))
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("O rei do oponente não foi encontrado no tabuleiro"));
+    }
+
     public PecaXadrez[][] getPecasXadrez() {
         final int linhas = this.tabuleiro.getLinhas();
         final int colunas = this.tabuleiro.getColunas();
