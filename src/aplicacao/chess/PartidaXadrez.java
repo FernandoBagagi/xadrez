@@ -39,6 +39,10 @@ public class PartidaXadrez {
         return Cor.BRANCO.equals(this.jogadorDoTurno) ? "BRANCAS" : "PRETAS";
     }
 
+    private Cor getOponente(Cor jogadorDoTurno) {
+        return Cor.BRANCO.equals(jogadorDoTurno) ? Cor.PRETO : Cor.BRANCO;
+    }
+
     public PecaXadrez[][] getPecasXadrez() {
         final int linhas = this.tabuleiro.getLinhas();
         final int colunas = this.tabuleiro.getColunas();
