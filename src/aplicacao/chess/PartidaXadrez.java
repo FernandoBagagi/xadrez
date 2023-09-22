@@ -13,8 +13,8 @@ public class PartidaXadrez {
     private int turno;
     private Cor jogadorDoTurno;
     private Tabuleiro tabuleiro;
-    List<Peca> pecasNoTabuleiro;
-    List<Peca> pecasCapturadas;
+    private List<Peca> pecasNoTabuleiro;
+    private List<Peca> pecasCapturadas;
 
     public PartidaXadrez() {
         this.tabuleiro = new Tabuleiro(8, 8);
