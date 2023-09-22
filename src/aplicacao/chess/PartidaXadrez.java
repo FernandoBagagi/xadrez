@@ -100,6 +100,16 @@ public class PartidaXadrez {
         return pecaCapturada;
     }
 
+    private void desfazerJogada(Posicao origem, Posicao destino, Peca pecaCapturada) {
+        Peca pecaMovida = this.tabuleiro.removerPeca(destino);
+        this.tabuleiro.posicionarPeca(pecaMovida, origem);
+        if(pecaCapturada != null) {
+            this.tabuleiro.posicionarPeca(pecaCapturada, destino);
+            this.pecasCapturadas.remove(pecaCapturada);
+            this.pecasNoTabuleiro.add(pecaCapturada);
+        }
+    }
+
     private void posicionarNovaPeca(char coluna, int linha, PecaXadrez peca) {
         this.tabuleiro.posicionarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
         this.pecasNoTabuleiro.add(peca);
