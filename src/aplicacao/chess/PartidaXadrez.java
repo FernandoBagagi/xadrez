@@ -13,6 +13,7 @@ public class PartidaXadrez {
     private Tabuleiro tabuleiro;
     private int turno;
     private Cor jogadorDoTurno;
+    private boolean isEmXeque;
     private List<Peca> pecasNoTabuleiro;
     private List<Peca> pecasCapturadas;
 
@@ -20,6 +21,7 @@ public class PartidaXadrez {
         this.tabuleiro = new Tabuleiro(8, 8);
         this.turno = 1;
         this.jogadorDoTurno = Cor.BRANCO;
+        this.isEmXeque = false;
         this.pecasNoTabuleiro = new ArrayList<>();
         this.pecasCapturadas = new ArrayList<>();
         this.posicionarPecasInicio();
