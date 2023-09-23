@@ -13,8 +13,8 @@ import aplicacao.chess.PosicaoXadrez;
 
 public class UserInterface {
 
-    /*Utility classes should not have public constructors*/
-    private UserInterface(){
+    /* Utility classes should not have public constructors */
+    private UserInterface() {
     }
 
     public static PosicaoXadrez lerPosicaoXadrez(Scanner scanner) {
@@ -31,10 +31,11 @@ public class UserInterface {
     public static void imprimirPartidaXadrez(PartidaXadrez partidaXadrez, List<PecaXadrez> pecasCapturadas) {
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
         UserInterface.imprimirPecasCapturadas(pecasCapturadas);
-        System.out.println(String.format("%nTurno: %d)!",partidaXadrez.getTurno()));
-        System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
+        System.out.println(String.format("%nTurno: %d)!", partidaXadrez.getTurno()));
+        System.out.println(
+                String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
     }
-    
+
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
@@ -45,7 +46,7 @@ public class UserInterface {
         }
         System.out.println("  a b c d e f g h");
     }
-    
+
     public static void imprimirTabuleiro(PecaXadrez[][] pecas, boolean[][] possiveisMovimentacoes) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + " ");
@@ -73,7 +74,7 @@ public class UserInterface {
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
-            }  catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
@@ -85,10 +86,11 @@ public class UserInterface {
         }
     }
 
-    private static void imprimirPecasCapturadas (List<PecaXadrez> pecasCapturadas) {
-        List<PecaXadrez> pecasBrancasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isBranca).collect(Collectors.toList());
+    private static void imprimirPecasCapturadas(List<PecaXadrez> pecasCapturadas) {
+        List<PecaXadrez> pecasBrancasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isBranca)
+                .collect(Collectors.toList());
         Object[] pecasPretasCapturadas = pecasCapturadas.stream().filter(PecaXadrez::isPreta).toArray();
-        
+
         System.out.println("\nPeças capturadas:");
         System.out.print("Brancas: ");
         System.out.println(Arrays.toString(pecasBrancasCapturadas.toArray()));
