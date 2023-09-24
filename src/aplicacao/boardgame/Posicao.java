@@ -17,11 +17,11 @@ public class Posicao {
 
     @Override
     public String toString() {
-        return String.format("%d, %d",linha, coluna);
+        return String.format("%d, %d", linha, coluna);
     }
 
     public PosicaoXadrez toPosicaoXadrex() {
-        return new PosicaoXadrez((char)('a' + this.getColuna()), 8 - this.getLinha());
+        return new PosicaoXadrez((char) ('a' + this.getColuna()), 8 - this.getLinha());
     }
 
     /*
