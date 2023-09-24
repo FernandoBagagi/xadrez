@@ -46,7 +46,6 @@ public class Tabuleiro {
         peca.posicao = posicao; // Consegue acessar pois é protected
     }
 
-    
     public Peca removerPeca(Posicao posicao) {
         if (this.posicaoExiste(posicao) && this.existeUmaPecaNaPosicao(posicao)) {
             Peca pecaRemovida = this.getPeca(posicao);
@@ -55,7 +54,7 @@ public class Tabuleiro {
             return pecaRemovida;
         }
         return null;
-    } 
+    }
 
     private boolean posicaoExiste(int linha, int coluna) {
         boolean linhaExiste = linha >= 0 && linha < this.getLinhas();
