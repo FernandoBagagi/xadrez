@@ -16,8 +16,11 @@ public abstract class Peca {
 
     public abstract boolean[][] movimentacoesPossiveis();
 
-    /*Hook Methods -> Métodos concretos que chamam métodos abstratos*/
-    /*Template Methods -> oferece um padrão de método que depende de objetos abstratos*/
+    /* Hook Methods -> Métodos concretos que chamam métodos abstratos */
+    /*
+     * Template Methods -> oferece um padrão de método que depende de objetos
+     * abstratos
+     */
     public boolean isMovimentacaoPossivel(Posicao posicao) {
         return this.movimentacoesPossiveis()[posicao.getLinha()][posicao.getColuna()];
     }
