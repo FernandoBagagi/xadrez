@@ -22,7 +22,7 @@ public class PosicaoXadrez {
 
     @Override
     public String toString() {
-        return String.format("%c%d",coluna, linha);
+        return String.format("%c%d", coluna, linha);
     }
 
     protected Posicao toPosicao() {
