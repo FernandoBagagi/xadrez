@@ -45,10 +45,10 @@ public class PartidaXadrez {
 
     private PecaXadrez getRei(Cor cor) {
         return this.pecasNoTabuleiro.stream()
-                    .map(PecaXadrez.class::cast)
-                    .filter(peca -> peca instanceof Rei && cor.equals(peca.getCor()))
-                    .findFirst()
-                    .orElseThrow(() -> new IllegalStateException("O rei do oponente não foi encontrado no tabuleiro"));
+                .map(PecaXadrez.class::cast)
+                .filter(peca -> peca instanceof Rei && cor.equals(peca.getCor()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("O rei do oponente não foi encontrado no tabuleiro"));
     }
 
     public PecaXadrez[][] getPecasXadrez() {
@@ -81,25 +81,30 @@ public class PartidaXadrez {
         this.validarPosicaoDestino(origem, destino);
         Peca pecaCapturada = this.moverPeca(origem, destino);
         this.mudarTurno();
-        return (PecaXadrez)pecaCapturada;
+        return (PecaXadrez) pecaCapturada;
     }
 
     private void validarPosicaoOrigem(Posicao origem) {
-        if(!this.tabuleiro.existeUmaPecaNaPosicao(origem)) {
-            throw new XadrezExcecao(String.format("Não há nenhuma peça na posição de origem (%s)!",origem.toPosicaoXadrex()));
+        if (!this.tabuleiro.existeUmaPecaNaPosicao(origem)) {
+            throw new XadrezExcecao(
+                    String.format("Não há nenhuma peça na posição de origem (%s)!", origem.toPosicaoXadrex()));
         }
-        Cor corPecaOrigem = ((PecaXadrez)this.tabuleiro.getPeca(origem)).getCor();
-        if(!this.jogadorDoTurno.equals(corPecaOrigem)) {
-            throw new XadrezExcecao(String.format("A peça na posição de origem (%s) não é %s!",origem.toPosicaoXadrex(), Cor.BRANCO.equals(this.jogadorDoTurno) ? "branca" : "preta"));
+        Cor corPecaOrigem = ((PecaXadrez) this.tabuleiro.getPeca(origem)).getCor();
+        if (!this.jogadorDoTurno.equals(corPecaOrigem)) {
+            throw new XadrezExcecao(String.format("A peça na posição de origem (%s) não é %s!",
+                    origem.toPosicaoXadrex(), Cor.BRANCO.equals(this.jogadorDoTurno) ? "branca" : "preta"));
         }
-        if(!this.tabuleiro.getPeca(origem).existePeloMenosUmaMovimentacaoPossivel()) {
-            throw new XadrezExcecao(String.format("Não há nenhum possível movimento para a peça na posição (%s)!",origem.toPosicaoXadrex()));
+        if (!this.tabuleiro.getPeca(origem).existePeloMenosUmaMovimentacaoPossivel()) {
+            throw new XadrezExcecao(String.format("Não há nenhum possível movimento para a peça na posição (%s)!",
+                    origem.toPosicaoXadrex()));
         }
     }
 
     private void validarPosicaoDestino(Posicao origem, Posicao destino) {
-        if(!this.tabuleiro.getPeca(origem).isMovimentacaoPossivel(destino)) {
-            throw new XadrezExcecao(String.format("A peça na posição de origem (%s) não pode se mover para a posição de destino (%s)",origem.toPosicaoXadrex(), destino.toPosicaoXadrex()));
+        if (!this.tabuleiro.getPeca(origem).isMovimentacaoPossivel(destino)) {
+            throw new XadrezExcecao(
+                    String.format("A peça na posição de origem (%s) não pode se mover para a posição de destino (%s)",
+                            origem.toPosicaoXadrex(), destino.toPosicaoXadrex()));
         }
     }
 
@@ -107,7 +112,7 @@ public class PartidaXadrez {
         Peca pecaMovida = this.tabuleiro.removerPeca(origem);
         Peca pecaCapturada = this.tabuleiro.removerPeca(destino);
         this.tabuleiro.posicionarPeca(pecaMovida, destino);
-        if(pecaCapturada != null) {
+        if (pecaCapturada != null) {
             this.pecasNoTabuleiro.remove(pecaCapturada);
             this.pecasCapturadas.add(pecaCapturada);
         }
@@ -117,7 +122,7 @@ public class PartidaXadrez {
     private void desfazerJogada(Posicao origem, Posicao destino, Peca pecaCapturada) {
         Peca pecaMovida = this.tabuleiro.removerPeca(destino);
         this.tabuleiro.posicionarPeca(pecaMovida, origem);
-        if(pecaCapturada != null) {
+        if (pecaCapturada != null) {
             this.tabuleiro.posicionarPeca(pecaCapturada, destino);
             this.pecasCapturadas.remove(pecaCapturada);
             this.pecasNoTabuleiro.add(pecaCapturada);
