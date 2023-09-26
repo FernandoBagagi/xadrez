@@ -10,6 +10,8 @@ import aplicacao.chess.PecaXadrez;
 import aplicacao.chess.PosicaoXadrez;
 import aplicacao.chess.XadrezExcecao;
 
+/*Não zerar */
+
 public class App {
     public static void main(String[] args) {
 
