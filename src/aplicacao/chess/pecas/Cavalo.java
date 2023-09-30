@@ -22,5 +22,5 @@ public class Cavalo extends PecaXadrez {
         boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
         return matrizPossiveisMovimentos;
     }
-    
+
 }
