@@ -12,7 +12,7 @@ public class Peao extends PecaXadrez {
 
     @Override
     public String toString() {
-        return Cor.BRANCO.equals(this.getCor()) ?  "P" : "p";
+        return Cor.BRANCO.equals(this.getCor()) ? "P" : "p";
     }
 
     @Override
