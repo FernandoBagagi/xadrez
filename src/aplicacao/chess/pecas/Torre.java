@@ -40,6 +40,7 @@ public class Torre extends PecaXadrez {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                break;
             } else {
                 break;
             }
@@ -57,6 +58,7 @@ public class Torre extends PecaXadrez {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                break;
             } else {
                 break;
             }
@@ -74,6 +76,7 @@ public class Torre extends PecaXadrez {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                break;
             } else {
                 break;
             }
@@ -91,6 +94,7 @@ public class Torre extends PecaXadrez {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
             } else if (temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
+                break;
             } else {
                 break;
             }
