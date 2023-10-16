@@ -158,7 +158,7 @@ public class PartidaXadrez {
         this.posicionarNovaPeca('h', 1, new Torre(this.tabuleiro, Cor.BRANCO));
 
         for (char c = 'a'; c <= 'h'; c++) {
-            this.posicionarNovaPeca(c, 2, new Peao(this.tabuleiro, Cor.PRETO));
+            this.posicionarNovaPeca(c, 2, new Peao(this.tabuleiro, Cor.BRANCO));
         }
     }
 
