@@ -2,7 +2,6 @@ package aplicacao.chess;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import aplicacao.boardgame.Peca;
@@ -35,6 +34,10 @@ public class PartidaXadrez {
 
     public Cor getJogadorDoTurno() {
         return jogadorDoTurno;
+    }
+
+    public boolean isEmXeque() {
+        return isEmXeque;
     }
 
     public String getCorPecasJogadorDoTurno() {
