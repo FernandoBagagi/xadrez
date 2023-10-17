@@ -160,7 +160,22 @@ public class PartidaXadrez {
     }
 
     private void posicionarPecasInicio() {
-        this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        
+        this.posicionarNovaPeca('d', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('e', 8, new Rei(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('f', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('d', 7, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('e', 7, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('f', 7, new Torre(this.tabuleiro, Cor.PRETO));
+        
+        this.posicionarNovaPeca('d', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('e', 1, new Rei(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('f', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('d', 2, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('e', 2, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('f', 2, new Torre(this.tabuleiro, Cor.BRANCO));
+        
+        /*this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('b', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('c', 8, new Bispo(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('d', 8, new Rainha(this.tabuleiro, Cor.PRETO));
@@ -184,7 +199,7 @@ public class PartidaXadrez {
 
         for (char c = 'a'; c <= 'h'; c++) {
             this.posicionarNovaPeca(c, 2, new Peao(this.tabuleiro, Cor.BRANCO));
-        }
+        }*/
     }
 
 }
