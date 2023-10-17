@@ -32,8 +32,10 @@ public class UserInterface {
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
         UserInterface.imprimirPecasCapturadas(pecasCapturadas);
         System.out.println(String.format("%nTurno: %d)!", partidaXadrez.getTurno()));
-        System.out.println(
-                String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
+        System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
+        if(partidaXadrez.isEmXeque()) {
+            System.out.println("Xeque!");
+        }
     }
 
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
