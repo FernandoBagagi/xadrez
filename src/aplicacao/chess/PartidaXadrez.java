@@ -2,6 +2,8 @@ package aplicacao.chess;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import aplicacao.boardgame.Peca;
 import aplicacao.boardgame.Posicao;
@@ -49,6 +51,21 @@ public class PartidaXadrez {
                 .filter(peca -> peca instanceof Rei && cor.equals(peca.getCor()))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("O rei do oponente não foi encontrado no tabuleiro"));
+    }
+
+    private boolean isReiEmXeque(Cor corDoRei) {
+        Posicao posicaoDoRei = this.getRei(corDoRei).getPosicaoXadrez().toPosicao();
+        final Cor cor = this.getOponente(corDoRei);
+        List<PecaXadrez> pecasDoOponente = this.pecasNoTabuleiro.stream()
+                .map(PecaXadrez.class::cast)
+                .filter(peca -> cor.equals(peca.getCor()))
+                .collect(Collectors.toList());
+        for(PecaXadrez peca : pecasDoOponente) {
+            if(peca.movimentacoesPossiveis()[posicaoDoRei.getLinha()][posicaoDoRei.getColuna()]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public PecaXadrez[][] getPecasXadrez() {
