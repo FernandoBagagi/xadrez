@@ -97,6 +97,11 @@ public class PartidaXadrez {
         this.validarPosicaoOrigem(origem);
         this.validarPosicaoDestino(origem, destino);
         Peca pecaCapturada = this.moverPeca(origem, destino);
+        if(this.isReiEmXeque(jogadorDoTurno)) {
+            this.desfazerJogada(origem, destino, pecaCapturada);
+            throw new XadrezExcecao("Você não pode se colocar em xeque!");
+        }
+        this.isEmXeque = this.isReiEmXeque(this.getOponente(jogadorDoTurno));
         this.mudarTurno();
         return (PecaXadrez) pecaCapturada;
     }
