@@ -46,6 +46,9 @@ public class App {
             }
         }
 
+        UserInterface.limparTela();
+        UserInterface.imprimirPartidaXadrez(partidaXadrez, pecasCapturadas);
+
     }
 
 }
