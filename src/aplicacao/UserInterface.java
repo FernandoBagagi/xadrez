@@ -32,9 +32,13 @@ public class UserInterface {
         UserInterface.imprimirTabuleiro(partidaXadrez.getPecasXadrez());
         UserInterface.imprimirPecasCapturadas(pecasCapturadas);
         System.out.println(String.format("%nTurno: %d)!", partidaXadrez.getTurno()));
-        System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
-        if(partidaXadrez.isEmXeque()) {
-            System.out.println("Xeque!");
+        if(partidaXadrez.isEmXequeMate()) {
+            System.out.printf("XEQUE-MATE%nVencedor: %s%n", String.valueOf(partidaXadrez.getJogadorDoTurno()));
+        } else {
+            System.out.println(String.format("Esperando a jogada do jogador das peças %s", partidaXadrez.getCorPecasJogadorDoTurno()));
+            if(partidaXadrez.isEmXeque()) {
+                System.out.println("Xeque!");
+            }
         }
     }
 
