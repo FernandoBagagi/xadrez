@@ -138,7 +138,11 @@ public class PartidaXadrez {
             throw new XadrezExcecao("Você não pode se colocar em xeque!");
         }
         this.isEmXeque = this.isReiEmXeque(this.getOponente(jogadorDoTurno));
-        this.mudarTurno();
+        if(this.isReiEmXequeMate(this.getOponente(jogadorDoTurno))) {
+            this.isEmXequeMate = true;
+        } else {
+            this.mudarTurno();
+        }
         return (PecaXadrez) pecaCapturada;
     }
 
