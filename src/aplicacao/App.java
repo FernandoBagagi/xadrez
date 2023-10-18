@@ -17,9 +17,7 @@ public class App {
         PartidaXadrez partidaXadrez = new PartidaXadrez();
         List<PecaXadrez> pecasCapturadas = new ArrayList<>(); // Já tem na partidaXadrez
 
-        int numeroJogadas = 50;
-
-        while (numeroJogadas-- != 0) {
+        while (!partidaXadrez.isEmXequeMate()) {
             try {
                 UserInterface.limparTela();
 
