@@ -76,6 +76,34 @@ public class PartidaXadrez {
         return false;
     }
 
+    private boolean isReiEmXequeMate(Cor corDoRei) {
+        if(this.isReiEmXeque(corDoRei)) {
+            List<PecaXadrez> pecas = this.pecasNoTabuleiro.stream()
+                .map(PecaXadrez.class::cast)
+                .filter(peca -> corDoRei.equals(peca.getCor()))
+                .collect(Collectors.toList());
+            for(PecaXadrez peca : pecas) {
+                boolean[][] possiveisMovimentacoes = peca.movimentacoesPossiveis();
+                for(int i = 0; i < this.tabuleiro.getLinhas(); i++) {
+                    for(int j = 0; j < this.tabuleiro.getColunas(); j++) {
+                        if(possiveisMovimentacoes[i][j]) {
+                            Posicao origem = peca.getPosicaoXadrez().toPosicao();
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = this.moverPeca(origem, destino);
+                            boolean testeXeque = this.isReiEmXeque(corDoRei);
+                            this.desfazerJogada(origem, destino, pecaCapturada);
+                            if(!testeXeque) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public PecaXadrez[][] getPecasXadrez() {
         final int linhas = this.tabuleiro.getLinhas();
         final int colunas = this.tabuleiro.getColunas();
