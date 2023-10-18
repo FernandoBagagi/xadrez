@@ -15,6 +15,7 @@ public class PartidaXadrez {
     private int turno;
     private Cor jogadorDoTurno;
     private boolean isEmXeque;
+    private boolean isEmXequeMate;
     private List<Peca> pecasNoTabuleiro;
     private List<Peca> pecasCapturadas;
 
@@ -38,6 +39,10 @@ public class PartidaXadrez {
 
     public boolean isEmXeque() {
         return isEmXeque;
+    }
+
+    public boolean isEmXequeMate() {
+        return isEmXequeMate;
     }
 
     public String getCorPecasJogadorDoTurno() {
