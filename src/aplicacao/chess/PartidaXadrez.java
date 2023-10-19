@@ -183,7 +183,8 @@ public class PartidaXadrez {
     }
 
     private void desfazerJogada(Posicao origem, Posicao destino, Peca pecaCapturada) {
-        Peca pecaMovida = this.tabuleiro.removerPeca(destino);
+        PecaXadrez pecaMovida = (PecaXadrez)this.tabuleiro.removerPeca(destino);
+        pecaMovida.decrementarContadorMovimentos();
         this.tabuleiro.posicionarPeca(pecaMovida, origem);
         if (pecaCapturada != null) {
             this.tabuleiro.posicionarPeca(pecaCapturada, destino);
