@@ -171,7 +171,8 @@ public class PartidaXadrez {
     }
 
     private Peca moverPeca(Posicao origem, Posicao destino) {
-        Peca pecaMovida = this.tabuleiro.removerPeca(origem);
+        PecaXadrez pecaMovida = (PecaXadrez)this.tabuleiro.removerPeca(origem);
+        pecaMovida.incrementarContadorMovimentos();
         Peca pecaCapturada = this.tabuleiro.removerPeca(destino);
         this.tabuleiro.posicionarPeca(pecaMovida, destino);
         if (pecaCapturada != null) {
