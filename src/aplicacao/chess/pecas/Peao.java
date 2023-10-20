@@ -21,8 +21,9 @@ public class Peao extends PecaXadrez {
         final int linhas = this.getTabuleiro().getLinhas();
         final int colunas = this.getTabuleiro().getColunas();
         boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
-        this.mover(matrizPossiveisMovimentos, Cor.BRANCO.equals(this.getCor()) ? 1 : -1);
-        this.capturar(matrizPossiveisMovimentos, Cor.BRANCO.equals(this.getCor()) ? 1 : -1);
+        final int sinal = Cor.BRANCO.equals(this.getCor()) ? 1 : -1;
+        this.mover(matrizPossiveisMovimentos, sinal);
+        this.capturar(matrizPossiveisMovimentos, sinal);
         return matrizPossiveisMovimentos;
     }
 
