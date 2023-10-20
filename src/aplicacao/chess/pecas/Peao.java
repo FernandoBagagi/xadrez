@@ -22,6 +22,7 @@ public class Peao extends PecaXadrez {
         final int colunas = this.getTabuleiro().getColunas();
         boolean[][] matrizPossiveisMovimentos = new boolean[linhas][colunas];
         this.mover(matrizPossiveisMovimentos, Cor.BRANCO.equals(this.getCor()) ? 1 : -1);
+        this.capturar(matrizPossiveisMovimentos, Cor.BRANCO.equals(this.getCor()) ? 1 : -1);
         return matrizPossiveisMovimentos;
     }
 
@@ -46,11 +47,13 @@ public class Peao extends PecaXadrez {
         if(isEspacoLivre && isPrimeiraCasaLivre && isPrimeiraJogada) {
             matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
         }
+    }
+
+    private void capturar(boolean[][] matrizPossiveisMovimentos, final int sinal) {
 
         //Capturar esquerda
-        posicaoAux.setLinha(this.posicao.getLinha() - (1 * sinal));
-        posicaoAux.setColuna(this.posicao.getColuna() - 1);
-        existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
+        Posicao posicaoAux = new Posicao(this.posicao.getLinha() - (1 * sinal), this.posicao.getColuna() - 1);
+        boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
         if(existePosicao && this.existePecaDoOponenteNa(posicaoAux)) {
             matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
         }
