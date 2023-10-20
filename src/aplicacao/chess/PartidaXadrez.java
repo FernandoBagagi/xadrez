@@ -201,11 +201,11 @@ public class PartidaXadrez {
     private void posicionarPecasInicio() {
         
         this.posicionarNovaPeca('a', 8, new Rei(this.tabuleiro, Cor.PRETO));
-        this.posicionarNovaPeca('b', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('e', 3, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('f', 3, new Torre(this.tabuleiro, Cor.PRETO));
         
-        this.posicionarNovaPeca('h', 7, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('e', 2, new Peao(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('e', 1, new Rei(this.tabuleiro, Cor.BRANCO));
-        this.posicionarNovaPeca('d', 1, new Torre(this.tabuleiro, Cor.BRANCO));
         
         /*this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('b', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
