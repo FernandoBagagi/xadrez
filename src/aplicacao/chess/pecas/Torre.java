@@ -98,6 +98,11 @@ public class Torre extends PecaXadrez {
             } else {
                 break;
             }
+            /* Possível substituição
+            matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = isEspacoLivre || temPecaDoOponente;
+            if(!isEspacoLivre || temPecaDoOponente) {
+                break;
+            }*/
             posicaoAux.setColuna(posicaoAux.getColuna() - 1);
         }
     }
