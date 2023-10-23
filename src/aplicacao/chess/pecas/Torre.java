@@ -36,12 +36,10 @@ public class Torre extends PecaXadrez {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
-            if (isEspacoLivre) {
+            if (isEspacoLivre || temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-            } else if (temPecaDoOponente) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                break;
-            } else {
+            }
+            if(!isEspacoLivre || temPecaDoOponente) {
                 break;
             }
             posicaoAux.setLinha(posicaoAux.getLinha() - 1);
@@ -54,12 +52,10 @@ public class Torre extends PecaXadrez {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
-            if (isEspacoLivre) {
+            if (isEspacoLivre || temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-            } else if (temPecaDoOponente) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                break;
-            } else {
+            }
+            if(!isEspacoLivre || temPecaDoOponente) {
                 break;
             }
             posicaoAux.setColuna(posicaoAux.getColuna() + 1);
@@ -72,12 +68,10 @@ public class Torre extends PecaXadrez {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
-            if (isEspacoLivre) {
+            if (isEspacoLivre || temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-            } else if (temPecaDoOponente) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                break;
-            } else {
+            }
+            if(!isEspacoLivre || temPecaDoOponente) {
                 break;
             }
             posicaoAux.setLinha(posicaoAux.getLinha() + 1);
@@ -90,19 +84,12 @@ public class Torre extends PecaXadrez {
             boolean existePosicao = this.getTabuleiro().posicaoExisteTratado(posicaoAux);
             boolean isEspacoLivre = existePosicao && !this.getTabuleiro().existeUmaPecaNaPosicao(posicaoAux);
             boolean temPecaDoOponente = existePosicao && !isEspacoLivre && this.existePecaDoOponenteNa(posicaoAux);
-            if (isEspacoLivre) {
+            if (isEspacoLivre || temPecaDoOponente) {
                 matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-            } else if (temPecaDoOponente) {
-                matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                break;
-            } else {
-                break;
             }
-            /* Possível substituição
-            matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = isEspacoLivre || temPecaDoOponente;
             if(!isEspacoLivre || temPecaDoOponente) {
                 break;
-            }*/
+            }
             posicaoAux.setColuna(posicaoAux.getColuna() - 1);
         }
     }
