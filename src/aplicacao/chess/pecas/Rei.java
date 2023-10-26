@@ -8,7 +8,7 @@ import aplicacao.chess.PecaXadrez;
 
 public class Rei extends PecaXadrez {
 
-    private PartidaXadrez partidaXadrez; //Usado só pra verificar se está em xeque
+    private PartidaXadrez partidaXadrez; // Usado só pra verificar se está em xeque
 
     public Rei(Tabuleiro tabuleiro, Cor cor, PartidaXadrez partidaXadrez) {
         super(tabuleiro, cor);
@@ -100,55 +100,67 @@ public class Rei extends PecaXadrez {
     }
 
     private boolean torrePodeFazerRoque(Posicao posicao) {
-        PecaXadrez peca = (PecaXadrez)this.getTabuleiro().getPeca(posicao);
-        //O instanceof retorna false se for null
+        PecaXadrez peca = (PecaXadrez) this.getTabuleiro().getPeca(posicao);
+        // O instanceof retorna false se for null
         return peca instanceof Torre && this.getCor().equals(peca.getCor()) && peca.getContadorMovimentos() == 0;
     }
 
     private void roqueDireita(boolean[][] matrizPossiveisMovimentos) {
-        //Porque testar se está em cheque?
-        if(this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
+        // Porque testar se está em cheque?
+        if (this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
             Posicao posicaoTorreDireita = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 3);
-            if(this.torrePodeFazerRoque(posicaoTorreDireita)) {
+            if (this.torrePodeFazerRoque(posicaoTorreDireita)) {
                 Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
                 final boolean isCasaDireitaLivre = (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
                 posicaoAux.setColuna(posicaoAux.getColuna() + 1);
-                final boolean isDuasCasasDireitaLivre = isCasaDireitaLivre && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
-                if(isDuasCasasDireitaLivre) {
+                final boolean isDuasCasasDireitaLivre = isCasaDireitaLivre
+                        && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
+                if (isDuasCasasDireitaLivre) {
                     matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna()] = true;
-                } 
+                }
             }
         }
     }
 
     private void roqueEsquerda(boolean[][] matrizPossiveisMovimentos) {
-        //Porque testar se está em cheque?
-        if(this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
+        // Porque testar se está em cheque?
+        if (this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
             Posicao posicaoTorreEsquerda = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 4);
-            if(this.torrePodeFazerRoque(posicaoTorreEsquerda)) {
+            if (this.torrePodeFazerRoque(posicaoTorreEsquerda)) {
                 Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 1);
                 final boolean isCasaEsquerdaLivre = (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
                 posicaoAux.setColuna(posicaoAux.getColuna() - 1);
-                final boolean isDuasCasasEsquerdaLivre = isCasaEsquerdaLivre && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
+                final boolean isDuasCasasEsquerdaLivre = isCasaEsquerdaLivre
+                        && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
                 posicaoAux.setColuna(posicaoAux.getColuna() - 1);
-                final boolean isTresCasasEsquerdaLivre = isDuasCasasEsquerdaLivre && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
-                if(isTresCasasEsquerdaLivre) {
-                    //O rei só move duas casas, por isso o ajuste da coluna
+                final boolean isTresCasasEsquerdaLivre = isDuasCasasEsquerdaLivre
+                        && (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
+                if (isTresCasasEsquerdaLivre) {
+                    // O rei só move duas casas, por isso o ajuste da coluna
                     matrizPossiveisMovimentos[posicaoAux.getLinha()][posicaoAux.getColuna() + 1] = true;
-                } 
+                }
             }
         }
     }
 
-    /*private void roqueDireita(boolean[][] matrizPossiveisMovimentos) {
-        Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
-        final boolean podeMoverUmaCasaDireita = this.getTabuleiro().posicaoExisteTratado(posicaoAux) && this.podeMover(posicaoAux);
-        posicaoAux.setColuna(posicaoAux.getColuna() + 1);
-        final boolean podeMoverDuasCasaDireita = podeMoverUmaCasaDireita && this.getTabuleiro().posicaoExisteTratado(posicaoAux) && this.podeMover(posicaoAux);
-        final boolean isPermitidoRoqueRei = podeMoverDuasCasaDireita && this.getContadorMovimentos() == 0;
-        if(isPermitidoRoqueRei) {
-
-        } 
-        Posicao posicaoAux = new Posicao(this.posicao.getLinha() - 1, this.posicao.getColuna() - 1);
-    }*/
+    /*
+     * private void roqueDireita(boolean[][] matrizPossiveisMovimentos) {
+     * Posicao posicaoAux = new Posicao(this.posicao.getLinha(),
+     * this.posicao.getColuna() + 1);
+     * final boolean podeMoverUmaCasaDireita =
+     * this.getTabuleiro().posicaoExisteTratado(posicaoAux) &&
+     * this.podeMover(posicaoAux);
+     * posicaoAux.setColuna(posicaoAux.getColuna() + 1);
+     * final boolean podeMoverDuasCasaDireita = podeMoverUmaCasaDireita &&
+     * this.getTabuleiro().posicaoExisteTratado(posicaoAux) &&
+     * this.podeMover(posicaoAux);
+     * final boolean isPermitidoRoqueRei = podeMoverDuasCasaDireita &&
+     * this.getContadorMovimentos() == 0;
+     * if(isPermitidoRoqueRei) {
+     * 
+     * }
+     * Posicao posicaoAux = new Posicao(this.posicao.getLinha() - 1,
+     * this.posicao.getColuna() - 1);
+     * }
+     */
 }
