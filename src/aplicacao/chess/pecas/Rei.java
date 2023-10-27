@@ -34,6 +34,8 @@ public class Rei extends PecaXadrez {
         this.moverParaSudoeste(matrizPossiveisMovimentos);
         this.moverParaOeste(matrizPossiveisMovimentos);
         this.moverParaNoroeste(matrizPossiveisMovimentos);
+        this.roqueDireita(matrizPossiveisMovimentos);
+        this.roqueEsquerda(matrizPossiveisMovimentos);
 
         return matrizPossiveisMovimentos;
     }
