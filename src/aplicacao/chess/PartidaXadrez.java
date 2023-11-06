@@ -179,6 +179,22 @@ public class PartidaXadrez {
             this.pecasNoTabuleiro.remove(pecaCapturada);
             this.pecasCapturadas.add(pecaCapturada);
         }
+        //Movimentação especial, Roque
+        if(pecaMovida instanceof Rei) {
+            if(destino.getColuna() == origem.getColuna() + 2) {
+                Posicao origemTorre = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+                Posicao destinoTorre = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+                PecaXadrez torre = (PecaXadrez)this.tabuleiro.removerPeca(origemTorre);
+                this.tabuleiro.posicionarPeca(torre, destinoTorre);
+                torre.incrementarContadorMovimentos();
+            } else if(destino.getColuna() == origem.getColuna() - 2) {
+                Posicao origemTorre = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+                Posicao destinoTorre = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+                PecaXadrez torre = (PecaXadrez)this.tabuleiro.removerPeca(origemTorre);
+                this.tabuleiro.posicionarPeca(torre, destinoTorre);
+                torre.incrementarContadorMovimentos();
+            }
+        }
         return pecaCapturada;
     }
 
@@ -191,6 +207,22 @@ public class PartidaXadrez {
             this.pecasCapturadas.remove(pecaCapturada);
             this.pecasNoTabuleiro.add(pecaCapturada);
         }
+        //Movimentação especial, Roque
+        if(pecaMovida instanceof Rei) {
+            if(destino.getColuna() == origem.getColuna() + 2) {
+                Posicao origemTorre = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+                Posicao destinoTorre = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+                PecaXadrez torre = (PecaXadrez)this.tabuleiro.removerPeca(origemTorre);
+                this.tabuleiro.posicionarPeca(torre, destinoTorre);
+                torre.decrementarContadorMovimentos();
+            } else if(destino.getColuna() == origem.getColuna() - 2) {
+                Posicao origemTorre = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+                Posicao destinoTorre = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+                PecaXadrez torre = (PecaXadrez)this.tabuleiro.removerPeca(origemTorre);
+                this.tabuleiro.posicionarPeca(torre, destinoTorre);
+                torre.decrementarContadorMovimentos();
+            }
+        }
     }
 
     private void posicionarNovaPeca(char coluna, int linha, PecaXadrez peca) {
@@ -200,21 +232,15 @@ public class PartidaXadrez {
 
     private void posicionarPecasInicio() {
         
-        this.posicionarNovaPeca('d', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('e', 8, new Rei(this.tabuleiro, Cor.PRETO, this));
-        this.posicionarNovaPeca('f', 8, new Torre(this.tabuleiro, Cor.PRETO));
-        this.posicionarNovaPeca('d', 6, new Bispo(this.tabuleiro, Cor.PRETO));
-        this.posicionarNovaPeca('e', 6, new Bispo(this.tabuleiro, Cor.PRETO));
-        this.posicionarNovaPeca('d', 5, new Cavalo(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('h', 8, new Torre(this.tabuleiro, Cor.PRETO));
         
 
-        this.posicionarNovaPeca('d', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('a', 1, new Torre(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('e', 1, new Rei(this.tabuleiro, Cor.BRANCO, this));
-        this.posicionarNovaPeca('f', 1, new Bispo(this.tabuleiro, Cor.BRANCO));
-        this.posicionarNovaPeca('d', 3, new Bispo(this.tabuleiro, Cor.BRANCO));
-        this.posicionarNovaPeca('e', 3, new Torre(this.tabuleiro, Cor.BRANCO));
-        this.posicionarNovaPeca('f', 3, new Torre(this.tabuleiro, Cor.BRANCO));
-
+        this.posicionarNovaPeca('g', 1, new Torre(this.tabuleiro, Cor.BRANCO));
+        
         /*this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('b', 8, new Cavalo(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('c', 8, new Bispo(this.tabuleiro, Cor.PRETO));
