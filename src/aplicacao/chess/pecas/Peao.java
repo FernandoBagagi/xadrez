@@ -3,12 +3,16 @@ package aplicacao.chess.pecas;
 import aplicacao.boardgame.Posicao;
 import aplicacao.boardgame.Tabuleiro;
 import aplicacao.chess.Cor;
+import aplicacao.chess.PartidaXadrez;
 import aplicacao.chess.PecaXadrez;
 
 public class Peao extends PecaXadrez {
 
-    public Peao(Tabuleiro tabuleiro, Cor cor) {
+    private PartidaXadrez partidaXadrez;
+
+    public Peao(Tabuleiro tabuleiro, Cor cor, PartidaXadrez partidaXadrez) {
         super(tabuleiro, cor);
+        this.partidaXadrez = partidaXadrez;
     }
 
     @Override
