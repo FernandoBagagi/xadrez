@@ -111,7 +111,7 @@ public class Rei extends PecaXadrez {
         // Porque testar se está em cheque?
         if (this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
             Posicao posicaoTorreDireita = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 3);
-            if (this.torrePodeFazerRoque(posicaoTorreDireita)) {
+            if (this.getTabuleiro().posicaoExisteTratado(posicaoTorreDireita) && this.torrePodeFazerRoque(posicaoTorreDireita)) {
                 Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() + 1);
                 final boolean isCasaDireitaLivre = (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
                 posicaoAux.setColuna(posicaoAux.getColuna() + 1);
@@ -128,7 +128,7 @@ public class Rei extends PecaXadrez {
         // Porque testar se está em cheque?
         if (this.getContadorMovimentos() == 0 && !this.partidaXadrez.isEmXeque()) {
             Posicao posicaoTorreEsquerda = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 4);
-            if (this.torrePodeFazerRoque(posicaoTorreEsquerda)) {
+            if (this.getTabuleiro().posicaoExisteTratado(posicaoTorreEsquerda) && this.torrePodeFazerRoque(posicaoTorreEsquerda)) {
                 Posicao posicaoAux = new Posicao(this.posicao.getLinha(), this.posicao.getColuna() - 1);
                 final boolean isCasaEsquerdaLivre = (PecaXadrez) this.getTabuleiro().getPeca(posicaoAux) == null;
                 posicaoAux.setColuna(posicaoAux.getColuna() - 1);
