@@ -16,9 +16,11 @@ public class PartidaXadrez {
     private Cor jogadorDoTurno;
     private boolean isEmXeque;
     private boolean isEmXequeMate;
+    private PecaXadrez peaoVuneravelEnPassant;
+    
     private List<Peca> pecasNoTabuleiro;
     private List<Peca> pecasCapturadas;
-
+    
     public PartidaXadrez() {
         this.tabuleiro = new Tabuleiro(8, 8);
         this.turno = 1;
@@ -28,27 +30,31 @@ public class PartidaXadrez {
         this.pecasCapturadas = new ArrayList<>();
         this.posicionarPecasInicio();
     }
-
+    
     public int getTurno() {
         return turno;
     }
-
+    
     public Cor getJogadorDoTurno() {
         return jogadorDoTurno;
     }
-
+    
     public boolean isEmXeque() {
         return isEmXeque;
     }
-
+    
     public boolean isEmXequeMate() {
         return isEmXequeMate;
+    }
+    
+    public PecaXadrez getPeaoVuneravelEnPassant() {
+        return peaoVuneravelEnPassant;
     }
 
     public String getCorPecasJogadorDoTurno() {
         return Cor.BRANCO.equals(this.jogadorDoTurno) ? "BRANCAS" : "PRETAS";
     }
-
+    
     private Cor getOponente(Cor jogadorDoTurno) {
         return Cor.BRANCO.equals(jogadorDoTurno) ? Cor.PRETO : Cor.BRANCO;
     }
