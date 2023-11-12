@@ -149,6 +149,10 @@ public class PartidaXadrez {
         } else {
             this.mudarTurno();
         }
+        //Movimento Especial En Passant
+        PecaXadrez pecaMovida = (PecaXadrez)this.tabuleiro.getPeca(destino);
+        final boolean moveuDuasCasas = destino.getLinha() == origem.getLinha() - 2 || destino.getLinha() == origem.getLinha() + 2;
+        this.peaoVuneravelEnPassant = pecaMovida instanceof Peao && moveuDuasCasas ? pecaMovida : null;
         return (PecaXadrez) pecaCapturada;
     }
 
