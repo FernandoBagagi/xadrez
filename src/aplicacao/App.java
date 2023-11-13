@@ -40,6 +40,17 @@ public class App {
                     pecasCapturadas.add(pecaCapturada);
                 }
 
+                if(partidaXadrez.getPeaoPromovido() != null) {
+                    System.out.println("O peão será promovido para Bispo('B/b'), Cavalo('/c'), Torre('T/t') ou Rainha (Qualquer outra tecla): ");
+                    String tipo = scanner.nextLine();
+                    for(String tipoValido : new String[]{"B", "b", "C", "c", "T", "t"}){
+                        if(tipoValido.equals(tipo)) {
+                            partidaXadrez.trocarPeaoPromovido(tipo.toUpperCase());
+                            break;
+                        }
+                    }
+                }
+
             } catch (XadrezExcecao | InputMismatchException e) {
                 System.err.println(e.getMessage() + " Pressione enter para continuar");
                 scanner.nextLine(); // Esperar usuário da enter
