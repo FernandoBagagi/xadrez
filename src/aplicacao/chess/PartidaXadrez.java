@@ -17,6 +17,7 @@ public class PartidaXadrez {
     private boolean isEmXeque;
     private boolean isEmXequeMate;
     private PecaXadrez peaoVuneravelEnPassant;
+    private PecaXadrez peaoPromovido;
     
     private List<Peca> pecasNoTabuleiro;
     private List<Peca> pecasCapturadas;
@@ -49,6 +50,10 @@ public class PartidaXadrez {
     
     public PecaXadrez getPeaoVuneravelEnPassant() {
         return peaoVuneravelEnPassant;
+    }
+    
+    public PecaXadrez getPeaoPromovido() {
+        return peaoPromovido;
     }
 
     public String getCorPecasJogadorDoTurno() {
@@ -143,17 +148,60 @@ public class PartidaXadrez {
             this.desfazerJogada(origem, destino, pecaCapturada);
             throw new XadrezExcecao("Você não pode se colocar em xeque!");
         }
+        PecaXadrez pecaMovida = (PecaXadrez)this.tabuleiro.getPeca(destino);
+        //Movimento Especial: Promoção
+        this.peaoPromovido = null;
+        if(pecaMovida instanceof Peao) {
+            final boolean isPeaoBrancoUltimaLinha = Cor.BRANCO.equals(pecaMovida.getCor()) && destino.getLinha() == 0;
+            final boolean isPeaoPretoUltimaLinha = Cor.PRETO.equals(pecaMovida.getCor()) && destino.getLinha() == 7;
+            if(isPeaoBrancoUltimaLinha || isPeaoPretoUltimaLinha){
+                this.peaoPromovido = pecaMovida; //Não dar null ao chamar trocarPeaoPromovido
+                this.peaoPromovido = this.trocarPeaoPromovido("Q");
+            }
+        }
+
         this.isEmXeque = this.isReiEmXeque(this.getOponente(jogadorDoTurno));
         if(this.isReiEmXequeMate(this.getOponente(jogadorDoTurno))) {
             this.isEmXequeMate = true;
         } else {
             this.mudarTurno();
         }
-        //Movimento Especial En Passant
-        PecaXadrez pecaMovida = (PecaXadrez)this.tabuleiro.getPeca(destino);
+        //Movimento Especial: En Passant
         final boolean moveuDuasCasas = destino.getLinha() == origem.getLinha() - 2 || destino.getLinha() == origem.getLinha() + 2;
         this.peaoVuneravelEnPassant = pecaMovida instanceof Peao && moveuDuasCasas ? pecaMovida : null;
         return (PecaXadrez) pecaCapturada;
+    }
+    
+    public PecaXadrez trocarPeaoPromovido(String tipo) {
+        if(this.peaoPromovido == null) {
+            throw new IllegalStateException("Não há peça para ser promovida");
+        }
+        
+        PecaXadrez novaPeca;
+        switch (tipo) {
+            case "B":
+                novaPeca = new Bispo(tabuleiro, this.peaoPromovido.getCor());
+                break;
+            case "C":
+                novaPeca = new Cavalo(tabuleiro, this.peaoPromovido.getCor());
+                break;
+            case "Q":
+                novaPeca = new Rainha(tabuleiro, this.peaoPromovido.getCor());
+                break;
+            case "T":
+                novaPeca = new Torre(tabuleiro, this.peaoPromovido.getCor());
+                break;
+            default:
+                throw new IllegalStateException("Tipo inválido de promoção");
+        }
+        
+        Posicao posicaoPeaoPromovido = this.peaoPromovido.getPosicaoXadrez().toPosicao();
+        Peca peaoQueEstaSendoPromovido = this.tabuleiro.removerPeca(posicaoPeaoPromovido);
+        this.pecasNoTabuleiro.remove(peaoQueEstaSendoPromovido);
+        this.tabuleiro.posicionarPeca(novaPeca, posicaoPeaoPromovido);
+        this.pecasNoTabuleiro.add(novaPeca);
+
+        return novaPeca;
     }
 
     private void validarPosicaoOrigem(Posicao origem) {
@@ -227,7 +275,7 @@ public class PartidaXadrez {
             this.pecasCapturadas.remove(pecaCapturada);
             this.pecasNoTabuleiro.add(pecaCapturada);
         }
-        //Movimentação especial, Roque
+        //Movimentação especial: Roque
         if(pecaMovida instanceof Rei) {
             if(destino.getColuna() == origem.getColuna() + 2) {
                 Posicao origemTorre = new Posicao(origem.getLinha(), origem.getColuna() + 1);
@@ -263,7 +311,7 @@ public class PartidaXadrez {
 
     private void posicionarPecasInicio() {
         
-        this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
+        this.posicionarNovaPeca('b', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('e', 8, new Rei(this.tabuleiro, Cor.PRETO, this));
         this.posicionarNovaPeca('g', 8, new Torre(this.tabuleiro, Cor.PRETO));
         this.posicionarNovaPeca('b', 4, new Peao(this.tabuleiro, Cor.PRETO, this));
@@ -272,7 +320,7 @@ public class PartidaXadrez {
         this.posicionarNovaPeca('a', 1, new Torre(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('g', 1, new Rei(this.tabuleiro, Cor.BRANCO, this));
         //this.posicionarNovaPeca('h', 1, new Torre(this.tabuleiro, Cor.BRANCO));
-        this.posicionarNovaPeca('a', 2, new Peao(this.tabuleiro, Cor.BRANCO, this));
+        this.posicionarNovaPeca('a', 7, new Peao(this.tabuleiro, Cor.BRANCO, this));
         this.posicionarNovaPeca('g', 5, new Peao(this.tabuleiro, Cor.BRANCO, this));
         
         /*this.posicionarNovaPeca('a', 8, new Torre(this.tabuleiro, Cor.PRETO));
