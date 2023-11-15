@@ -324,7 +324,7 @@ public class PartidaXadrez {
             this.posicionarNovaPeca(c, 7, new Peao(this.tabuleiro, Cor.PRETO, this));
         }
 
-        this.posicionarNovaPeca('a', 3, new Torre(this.tabuleiro, Cor.BRANCO));
+        this.posicionarNovaPeca('a', 1, new Torre(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('b', 1, new Cavalo(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('c', 1, new Bispo(this.tabuleiro, Cor.BRANCO));
         this.posicionarNovaPeca('d', 1, new Rainha(this.tabuleiro, Cor.BRANCO));
